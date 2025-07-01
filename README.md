@@ -1,5 +1,6 @@
+Data Scraping 
 
-#Required Libraries
+
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC 
@@ -36,6 +37,8 @@ sns.pairplot(iris_df,hue='species')
 plt.suptitle('iris dataset feature visualisation',y=1.02)
 plt.show()
 
+
+Output
 
 Accuracy :  1.0
 Classification Report:               precision    recall  f1-score   support

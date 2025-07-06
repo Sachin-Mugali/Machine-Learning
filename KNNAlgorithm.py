@@ -1,57 +1,48 @@
 
-#ml lab linear regression 
+KNN algorithm program 4
 
-#https://www.statlearning.com/resources-first-edition  source file
+
+
 import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression #importing linear regression from sklearn
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error,r2_score
-import seaborn as sns
+from sklearn.preprocessing import  StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
 
-#load dataset
-data = pd.read_csv("C:/Users/admin/Desktop/mca067/Advertising.csv")
-print(data.head())
-print("first five lines printed")
-if 'Unnamed: 0' in data.columns:
-    data = data.drop(columns=['Unnamed: 0'])
+#load the dataset from the iris.csv file
 
-#explore the data
-print(data.head())
-print(data.describe())
-print("all details printed")
-sns.pairplot(data,x_vars=['TV'],y_vars='sales',height=3,aspect=1,kind='scatter')#can delete height aspect kind when error comes 
-plt.show()
+data = pd.read_csv("Iris.csv")
+print(data)
+print("downloaded successfully")
 
-#Features target
-x=data[['TV']] #independent 
-y=data['sales'] #dependent 
+X = data.drop('species',axis = 1)  #X capital and y is small letter
+y = data['species']
 
-#training dataset
-x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2,random_state=42)
 
-#create the train model
-model = LinearRegression()
-model.fit(x_train, y_train)
-#predict values
-y_pred = model.predict(x_test)
-#evaluate
-print("Coefficients:",model.coef_[0])
-print("Intercept:",model.intercept_)
-print("Mean square error:",mean_squared_error( y_test, y_pred,))
-print("R2 score:",r2_score(y_test, y_pred))
+#split the dataset into training and testing sets
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.30)
 
-plt.scatter(x_test, y_test, color='blue')
-plt.plot(x_test, y_pred, color = 'red')
-plt.title('TV advertising vs sales')
-plt.xlabel('TV advertising spen vs sales')
-plt.ylabel('sales($k)')
-plt.show()
 
-for multiple regression
-plt.scatter(x_test, y_test, color='blue')
-plt.plot(x_test, y_pred, color = 'red')
-plt.title('TV advertising vs sales')
-plt.xlabel('TV advertising spen vs sales')
-plt.ylabel('sales($k)')
-plt.show()
+#feature scaling(standardising the data)
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train) #after scaling it increased  decimal to more than 1 value
+X_test_scaled = scaler.transform(X_test)
+
+
+#initialize the classifiers with k=3
+classifier = KNeighborsClassifier(n_neighbors=5)
+classifier.fit(X_train_scaled,y_train)
+
+
+#make predictions on test datas
+y_pred = classifier.predict(X_test_scaled)
+
+
+#Evaluate the model and training data using accuracy
+accuracy = accuracy_score(y_test, y_pred)
+print(f"accuracy of the KNN model:{accuracy * 100:.2f}%")
+#or print(f"accuracy of the KNN model:",accuracy * 100)#2f means upto decimal points
+
+#optionally print the predicted vs actual labels
+print(f"predicted labels:{y_pred}")
+print(f"actual labels:{y_test.values}")

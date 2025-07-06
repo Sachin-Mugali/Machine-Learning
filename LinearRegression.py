@@ -1,5 +1,5 @@
 
-#ml lab linear regression 
+#ml linear regression 
 
 #https://www.statlearning.com/resources-first-edition  source file
 import pandas as pd

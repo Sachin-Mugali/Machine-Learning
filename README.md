@@ -5,4 +5,4 @@
 <a href="KNNAlgorithm.py">KNN Algorithm</a></br>
 <a href="LinearRegression.py">Linear Regression</a></br>
 <a href="SVMAlgorithm.py">SVM Algorithm</a>
-<a href="NaiveBayes.py">Naive Bayes Algorithm</a>
+<a href="NaiveBayes.py">Naive Bayes Algorithm</a></br>

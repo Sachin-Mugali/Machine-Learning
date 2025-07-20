@@ -1,6 +1,3 @@
-program 6
-__________________________________________
-
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split  #to take data as train and spit

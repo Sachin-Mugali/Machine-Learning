@@ -7,3 +7,4 @@
 <a href="SVMAlgorithm.py">SVM Algorithm</a></br>
 <a href="NaiveBayes.py">Naive Bayes Algorithm</a></br>
 <a href="Bagging_methods.py">Bagging Methods Algorithm</a>
+<a href="Boosting_methods.py">Boosting Methods Algorithm</a>

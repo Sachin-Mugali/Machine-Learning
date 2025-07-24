@@ -43,7 +43,7 @@ print(classification_report(y_test, gb_pred))
 
 #if xgb classifier not working install pip install XGBoost
 #XGBoost Classifier
-xgb  = XGBClassifier(use_label_encounter=False)
+xgb  = XGBClassifier(use_label_encoder=False , eval_metric='logloss')
 xgb.fit(x_train, y_train)
 xgb_pred=xgb.predict(x_test)
 

@@ -1,8 +1,3 @@
-
-KNN algorithm program 4
-
-
-
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import  StandardScaler
@@ -18,25 +13,20 @@ print("downloaded successfully")
 X = data.drop('species',axis = 1)  #X capital and y is small letter
 y = data['species']
 
-
 #split the dataset into training and testing sets
 X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.30)
-
 
 #feature scaling(standardising the data)
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train) #after scaling it increased  decimal to more than 1 value
 X_test_scaled = scaler.transform(X_test)
 
-
 #initialize the classifiers with k=3
 classifier = KNeighborsClassifier(n_neighbors=5)
 classifier.fit(X_train_scaled,y_train)
 
-
 #make predictions on test datas
 y_pred = classifier.predict(X_test_scaled)
-
 
 #Evaluate the model and training data using accuracy
 accuracy = accuracy_score(y_test, y_pred)

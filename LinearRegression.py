@@ -48,10 +48,4 @@ plt.xlabel('TV advertising spen vs sales')
 plt.ylabel('sales($k)')
 plt.show()
 
-#for multiple regression
-plt.scatter(x_test, y_test, color='blue')
-plt.plot(x_test, y_pred, color = 'red')
-plt.title('TV advertising vs sales')
-plt.xlabel('TV advertising spen vs sales')
-plt.ylabel('sales($k)')
-plt.show()
+

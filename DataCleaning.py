@@ -1,5 +1,3 @@
-data cleaning
-
 import pandas as pd
 import numpy as np
 #load dataset
